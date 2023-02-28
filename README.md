@@ -17,16 +17,16 @@ To complete the challenge, you'll have to write some HTTP queries from `Gistapi`
 Please don't use a github API client (i.e. using a basic HTTP library like requests or aiohttp or urllib3 is fine but not PyGithub or similar).
 
 
-## Stretch goals
+## Stretch goals ---check stretch_goals.txt
 
-* Implement a few tests (using a testing framework of your choice)
+* Implement a few tests (using a testing framework of your choice) -- gistapi_test.py
 * In all places where it makes sense, implement data validation, error handling, pagination
 * Migrate from `requirements.txt` to `pyproject.toml` (e.g. using [poetry](https://python-poetry.org/))
 * Implement a simple Dockerfile
 * Implement handling of huge gists
-* Set up the necessary tools to ensure code quality (feel free to pick up a set of tools you personally prefer)
+* Set up the necessary tools to ensure code quality (feel free to pick up a set of tools you personally prefer)--code_quality_check.py
 * Document how to start the application, how to build the docker image, how to run tests, and (optionally) how to run code quality checkers
-* Prepare a TODO.md file describing possible further improvements to the archtiecture:
+* Prepare a TODO.md file describing possible further improvements to the archtiecture: --check TODO.md
     - Can we use a database? What for? SQL or NoSQL?
     - How can we protect the api from abusing it?
     - How can we deploy the application in a cloud environment?

@@ -1,0 +1,90 @@
+* Implement a few tests (using a testing framework of your choice)---Done using unittest
+------------------------------------------------------------------------------------------------------------------------------------
+* In all places where it makes sense, implement data validation, error handling, pagination   --Done
+-----------------------------------------------------------------------------------------------------------------------------------
+
+* Migrate from `requirements.txt` to `pyproject.toml` (e.g. using [poetry](https://python-poetry.org/)) ---Done
+
+Create requirements.txt file first using command: pip freeze> requirements.txt 
+on main folder install poetry
+Run poetry init --- to create pyproject.toml file
+opy and paste the contents of your requirements.txt file into this section.
+
+For example, if your requirements.txt file looks like this:
+
+makefile
+Copy code
+Flask==1.1.2
+requests==2.24.0
+Your pyproject.toml file would look like this:
+
+makefile
+Copy code
+[tool.poetry]
+name = "my-project"
+version = "0.1.0"
+description = ""
+
+[tool.poetry.dependencies]
+Flask = "1.1.2"
+requests = "2.24.0"
+
+To convert the requirements.txt data to pyproject.toml dependency format, you can follow these steps:
+
+1) Create a new pyproject.toml file in your project directory if one does not exist.
+2) Open the pyproject.toml file and navigate to the [tool.poetry.dependencies] section.
+3) Copy the contents of the requirements.txt file.
+4)Paste the contents into the [tool.poetry.dependencies] section in the pyproject.toml file.
+
+Modify the dependency entries to the Poetry format by replacing == with = and enclosing the version numbers in double quotes.
+Save the pyproject.toml file.
+***********or use ********************
+poetry add flask requests flake8 pylint black   # packages 
+
+Command to test poetry- poetry run python gistapi/gistapi.py
+----------------------------------------------------------------------------------------------------------------------------------------
+* Implement a simple Dockerfile
+docker run -d -p 80:80 docker/getting-started --start docker
+
+Add - from flask_cors import CORS, cross_origin
+    CORS(app)
+
+docker build -t gistapi .
+docker run -p 5000:5000 myapp
+
+----------------------------------------------------------------------------------------------------------------------------------------
+* Implement handling of huge gists
+
+1) Divide the content response for gists lists of a user using chunk
+
+data_response= requests.get(data['raw_url'],headers=headers,stream=True) ---at Line 97
+
+at line 101 in gistapi.py
+content_chunks = []
+for chunk in data_response.iter_content(chunk_size=10000000):
+    if chunk:
+        content_chunks.append(chunk)
+        content = b''.join(content_chunks).decode('utf-8')
+
+------------------------------------------------------------------------------------------------------------------------------------
+* Set up the necessary tools to ensure code quality (feel free to pick up a set of tools you personally prefer)
+command: python gistapi/gistapi_test.py
+
+--------------------------------------------------------------------------------------------------------------------------------
+* Document how to start the application, how to build the docker image, how to run tests, and (optionally) how to run code quality checkers
+
+******Start the application*****
+Go to the folder where you copy the git branch
+run command: python gistapi/gistapi.py
+
+
+*******Run tests******************
+Go to the folder where you copy the git branch
+run command: python gistapi/gistapi_test.py
+
+
+*******Code quality check*********
+Go to the folder where you copy the git branch
+run command: python gistapi/code_quality_check.py
+
+note: you can add as many tools as you want, but make sure to put the tools in requirements.txt/.toml file
